@@ -18,8 +18,6 @@ function preload() {
     backgroundImg = loadImage('img/' + config.backgroundImage)
   }
 
-  sideImg = loadImage('img/side_graphic.png');
-  
   imgRefs = config.voices.map( (voice) => { return loadImage('img/' + voice.image) } );
 
   prevImg = loadImage('img/previous_sound.png');
@@ -85,12 +83,6 @@ function createNoteImgs(notes) {
 
 function draw() {
   background(backgroundImg ?? config.backgroundColor ?? 'gray');
-
-  image(sideImg, 0, 0);
-
-  let menuColor = color('#FFFFFF');
-  menuColor.setAlpha(76);
-  fill(menuColor);
 
   noStroke();
 
