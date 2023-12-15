@@ -6,10 +6,10 @@ config.defaultPlaybackRate = 2.0;
 
 // seconds as min/max bounds, min default 0, max default config.duration
 config.voices = [
-    {image: 'toaster.png', file: 'bss_eggo_dingthing_toaster_', count:11, max: 1.5},
-    {image: 'ding.png', file: 'bss_eggo_dingthing_ding_', count:17, min: 1.5, max: 3.0},  
-    {image: 'waffle.png', file: 'bss_eggo_dingthing_waffle_', count:6, min: 3.0}, 
-    {image: 'leggo.png', file: 'bss_eggo_dingthing_leggo_', count:11}
+    {image: 'Lickin.png', file: 'bss_kfc_lickinlab_lick_', count:5, max: 1.5},
+    {image: 'Mmmm.png', file: 'bss_kfc_lickinlab_mmm_', count:5, min: 1.5, max: 3.0},  
+    {image: 'Music.png', file: 'bss_kfc_lickinlab_music_', count:5, min: 3.0}, 
+    {image: 'X-Factor.png', file: 'bss_eggo_dingthing_leggo_', count:11}
 ];
 
 config.voiceCount = config.voices.length;
