@@ -23,6 +23,9 @@ function preload() {
   prevImg = loadImage('img/previous_sound.png');
   nextImg = loadImage('img/next_sound.png');
 
+  prevGroupImg = loadImage('img/previous_group.png');
+  nextGroupImg = loadImage('img/next_group.png');
+
   playImg = loadImage('img/play.png');
   stopImg = loadImage('img/stop.png');
   randomImg = loadImage('img/random.png');
@@ -64,6 +67,9 @@ function setup() {
     playButton = new Button(playImg, 174, 816, stopImg);
     saveButton = new Button(saveImg, 346, 831);
 
+    prevGroupButton = new Button(prevGroupImg, 893, 948);
+    nextGroupButton = new Button(nextGroupImg, 1447, 948);
+
     slider = new HScrollbar(100, 1029-8, 294, 16, 16, 0.1, 4.0, playbackRate);
 
     helpButton = new Button(helpImg, 1831, 992);
@@ -98,6 +104,9 @@ function draw() {
   randomButton.display();
   helpButton.display();
   saveButton.display();
+
+  prevGroupButton.display();
+  nextGroupButton.display();
 
   image(slowerImg, 11, 966);
   image(fasterImg, 397, 971);
@@ -140,6 +149,20 @@ function mousePressed() {
     modalTinyNoFooter.setContent(document.querySelector('.modal-content').innerHTML);
     // modalTinyNoFooter.setContent(`<h2>Copy this link to share your creation:</h2><p>${url}</p>`);
     modalTinyNoFooter.open();
+    return;
+  }
+
+  if ( nextGroupButton.inBounds(mouseX, mouseY) ) {
+    for (let i = 0; i < 3; i++) {
+      noteImgs[i].noteValue.nextNoteIndex();
+    }
+    return;
+  }
+
+  if ( prevGroupButton.inBounds(mouseX, mouseY) ) {
+    for (let i = 0; i < 3; i++) {
+      noteImgs[i].noteValue.previousNoteIndex();
+    }
     return;
   }
 
