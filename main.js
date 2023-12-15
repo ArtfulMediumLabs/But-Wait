@@ -60,11 +60,11 @@ function setup() {
     createNoteImgs(notes);
     createPart(notes);
 
-    randomButton = new Button(randomImg, 842, 831);
-    playButton = new Button(playImg, 984, 816, stopImg);
-    saveButton = new Button(saveImg, 1156, 831);
+    randomButton = new Button(randomImg, 32, 831);
+    playButton = new Button(playImg, 174, 816, stopImg);
+    saveButton = new Button(saveImg, 346, 831);
 
-    slider = new HScrollbar(910, 1030-8, 294, 16, 16, 0.1, 4.0, playbackRate);
+    slider = new HScrollbar(100, 1029-8, 294, 16, 16, 0.1, 4.0, playbackRate);
 
     helpButton = new Button(helpImg, 1831, 992);
 }
@@ -93,8 +93,8 @@ function draw() {
   helpButton.display();
   saveButton.display();
 
-  image(slowerImg, 821, 966);
-  image(fasterImg, 1207, 971);
+  image(slowerImg, 11, 966);
+  image(fasterImg, 397, 971);
 
   noteImgs.forEach( (note) => { note.display(); })
 
@@ -398,10 +398,13 @@ class HScrollbar {
     fill(f);
     let dW = this.pos - this.x;
     rect(this.x, this.y - this.height/2, dW, this.height, this.radius / 2);
-    f.setAlpha(127);
+
+    f = color(config.sliderTrack);
+    f.setAlpha(64);
     fill(f);
     rect(this.pos, this.y - this.height/2, this.width - dW, this.height, this.radius / 2);
 
+    f = color(config.sliderColor);
     f.setAlpha(255);
     fill(f);
     circle(this.pos, this.y, this.radius * 2);

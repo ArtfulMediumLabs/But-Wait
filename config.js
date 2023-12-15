@@ -17,5 +17,6 @@ config.voiceCount = config.voices.length;
 // Order of precedence: image, color, default gray (if undefined)
 config.backgroundColor = '#D7062E';
 config.backgroundImage = 'background.png';
-config.sliderColor = '#1C274C';
+config.sliderColor = '#D7062E';
+config.sliderTrack = '#4C1C1C';
 config.tapDelay = 150;
