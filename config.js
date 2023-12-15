@@ -6,9 +6,9 @@ config.defaultPlaybackRate = 2.0;
 
 // seconds as min/max bounds, min default 0, max default config.duration
 config.voices = [
-    {image: 'Lickin.png', file: 'bss_kfc_lickinlab_lick_', count:5, max: 1.5},
-    {image: 'Mmmm.png', file: 'bss_kfc_lickinlab_mmm_', count:5, min: 1.5, max: 3.0},  
-    {image: 'Music.png', file: 'bss_kfc_lickinlab_music_', count:5, min: 3.0}, 
+    {image: 'Lickin.png', file: 'bss_kfc_lickinlab_lick_', count:5, time: 1.5, velocity: 0.8, y: 62},
+    {image: 'Mmmm.png', file: 'bss_kfc_lickinlab_mmm_', count:5, time: 1.5, velocity: 0.8, y: 413},  
+    {image: 'Music.png', file: 'bss_kfc_lickinlab_music_', count:5, time: 1.5, velocity: 0.8, y: 722}, 
     {image: 'X-Factor.png', file: 'bss_kfc_lickinlab_xfactor_', count:5}
 ];
 

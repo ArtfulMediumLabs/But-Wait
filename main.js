@@ -73,7 +73,13 @@ function createNoteImgs(notes) {
   noteImgs = []
   notes.forEach(function (note) {
     let left = sequenceWidth * note.time / config.duration + menuWidth + 8;
-    let top = (1 - note.velocity) * sequenceHeight + 8;
+    let top;
+    if (Object.hasOwn(config.voices[note.voiceIndex], 'y')) {
+      top = config.voices[note.voiceIndex].y;
+    } else {
+      top = (1 - note.velocity) * sequenceHeight + 8;
+    }
+    
     let img = imgRefs[note.voiceIndex];
     let newNote = new Note(img,left,top,note);
     note.noteImg = newNote;
@@ -138,6 +144,9 @@ function mousePressed() {
   }
 
   for (let i = noteImgs.length - 1; i >= 0; i--) {
+    if ( noteImgs[i].noteValue.fixed == true ) {
+      continue;
+    }
     if ( noteImgs[i].inPreviousHover(mouseX, mouseY) ) {
       noteImgs[i].noteValue.previousNoteIndex();
       break;
@@ -218,7 +227,7 @@ class Note {
 
   display() {
     image(this.img, this.x, this.y);
-    if (this.hover) {
+    if (this.noteValue.fixed == false && this.hover) {
       image(prevImg, this.x, this.y + this.img.height - prevImg.height);
       image(nextImg, this.x + this.img.width - prevImg.width, this.y + this.img.height - prevImg.height);
       //displayTextNote.bind(this)()
@@ -243,10 +252,10 @@ class Note {
   }
 
   updateValue() {
-    // let left = sequenceWidth * note.time / totalDuration + menuWidth + 8;
-    this.noteValue.time = ( this.x - (menuWidth + 8) ) / sequenceWidth * config.duration;
-    // let top = (1 - note.velocity) * sequenceHeight + 8;
-    this.noteValue.velocity = (1 - (this.y - 8) / sequenceHeight);
+    if (this.noteValue.fixed == false) {
+      this.noteValue.time = ( this.x - (menuWidth + 8) ) / sequenceWidth * config.duration;
+      this.noteValue.velocity = (1 - (this.y - 8) / sequenceHeight);
+    }
   }
 
   maxX() {
@@ -258,6 +267,9 @@ class Note {
   }
 
   inPreviousHover(x, y) {
+    if (this.noteValue.fixed == true) {
+      return false;
+    }
     return ( 
       between(x, this.x, this.x + prevImg.width) && 
       between(y, this.y + this.img.height - prevImg.height, this.y + this.img.height) 
@@ -265,6 +277,9 @@ class Note {
   }
 
   inNextHover(x, y) {
+    if (this.noteValue.fixed == true) {
+      return false;
+    }
     return ( 
       between(x, this.x + this.img.width - nextImg.width, this.x + this.img.width) && 
       between(y, this.y + this.img.height - prevImg.height, this.y + this.img.height) 

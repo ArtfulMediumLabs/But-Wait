@@ -79,15 +79,29 @@ function randomNotes(length = config.voiceCount) {
   }
   
 function randomNote(voiceIndex) {
-    let min = config.voices[voiceIndex].min ?? 0.0;
-    let max = config.voices[voiceIndex].max ?? (config.duration * 0.9);
+    let fixed = false;
 
-    let time = min + Math.random() * (max - min);
-    let velocity = Math.random() * 0.9 + 0.1;
+    let time;
+    if (Object.hasOwn(config.voices[voiceIndex], 'time')) {
+        time = config.voices[voiceIndex].time;
+        fixed = true;
+    } else {
+        let min = config.voices[voiceIndex].min ?? 0.0;
+        let max = config.voices[voiceIndex].max ?? (config.duration * 0.9);
+    
+        time = min + Math.random() * (max - min);
+    }
+
+    let velocity;
+    if (Object.hasOwn(config.voices[voiceIndex], 'velocity')) {
+        fixed = true;
+        velocity = config.voices[voiceIndex].velocity;
+    } else {
+        velocity = Math.random() * 0.9 + 0.1;
+    }
     
     let noteIndex = Math.floor(Math.random() * noteRanges[voiceIndex].length);
-    let note = new NoteValue(time, velocity, voiceIndex, noteIndex);
-    // return {'time': time, 'note': notes[noteIndex], 'voiceIndex': voiceIndex, 'velocity': velocity }
+    let note = new NoteValue(time, velocity, voiceIndex, noteIndex, fixed);
     return note;
 }
 
@@ -104,11 +118,12 @@ function randomTimeinMeasures() {
 }
 
 class NoteValue {
-    constructor(time, velocity, voiceIndex, noteIndex) {
+    constructor(time, velocity, voiceIndex, noteIndex, fixed=false) {
         this.time = time;
         this.velocity = velocity;
         this.voiceIndex = voiceIndex;
         this.noteIndex = noteIndex;
+        this.fixed = fixed;
         this.noteImg = undefined;
     }
 
