@@ -96,6 +96,8 @@ function createNoteImgs(notes) {
 function draw() {
   background(backgroundImg ?? config.backgroundColor ?? 'gray');
 
+  cursor('img/cursor.png');
+
   noStroke();
 
   playButton.selected = Tone.Transport.seconds > 0;
