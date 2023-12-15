@@ -38,7 +38,7 @@ function preload() {
 function setup() {
     createCanvas(1920, 1080);
     
-    menuWidth = 400;
+    menuWidth = 550;
     sequenceWidth = 1920 - menuWidth - 16;
 
     sequenceHeight = 869 - 229 - 16;
