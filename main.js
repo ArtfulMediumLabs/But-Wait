@@ -168,6 +168,10 @@ function mousePressed() {
 
   for (let i = noteImgs.length - 1; i >= 0; i--) {
     if ( noteImgs[i].noteValue.fixed == true ) {
+      if ( noteImgs[i].inBounds(mouseX, mouseY) ) {
+        noteImgs[i].noteValue.muted = !noteImgs[i].noteValue.muted;
+        break;
+      }
       continue;
     }
     if ( noteImgs[i].inPreviousHover(mouseX, mouseY) ) {
@@ -249,6 +253,11 @@ class Note {
   }
 
   display() {
+    if ( this.noteValue.muted == true ){
+      tint(255, 180);
+    } else {
+      noTint();
+    }
     image(this.img, this.x, this.y);
     if (this.noteValue.fixed == false && this.hover) {
       image(prevImg, this.x, this.y + this.img.height - prevImg.height);

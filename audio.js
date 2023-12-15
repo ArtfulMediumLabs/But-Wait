@@ -52,8 +52,10 @@ function createPart(values) {
         part.dispose()
     }
     part = new Tone.Part(((time, value) => {
-        sampler.triggerAttackRelease(value.note, 4.0, time, value.velocity)
-        value.noteImg.bounce();
+        if (value.muted == false) {
+            sampler.triggerAttackRelease(value.note, 4.0, time, value.velocity)
+            value.noteImg.bounce();
+        }
     }), values);
     
     part.playbackRate = playbackRate;
@@ -130,6 +132,7 @@ class NoteValue {
         this.voiceIndex = voiceIndex;
         this.noteIndex = noteIndex;
         this.fixed = fixed;
+        this.muted = false;
         this.noteImg = undefined;
     }
 
@@ -141,7 +144,9 @@ class NoteValue {
     nextNoteIndex() {
         this.noteIndex += 1;
         this.noteIndex %= noteRanges[this.voiceIndex].length;
-        this.previewSound();
+        if (this.muted == false) {
+            this.previewSound();
+        }
     }
 
     previousNoteIndex() {
