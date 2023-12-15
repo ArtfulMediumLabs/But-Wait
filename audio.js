@@ -88,6 +88,12 @@ function randomNote(voiceIndex) {
     } else {
         let min = config.voices[voiceIndex].min ?? 0.0;
         let max = config.voices[voiceIndex].max ?? (config.duration * 0.9);
+
+        if ( Array.isArray(min) && Array.isArray(max) ) {
+            let index = Math.floor(Math.random() * min.length);
+            min = min[index];
+            max = max[index];
+        }
     
         time = min + Math.random() * (max - min);
     }
