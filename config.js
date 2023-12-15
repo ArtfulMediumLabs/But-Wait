@@ -9,7 +9,7 @@ config.voices = [
     {image: 'Lickin.png', file: 'bss_kfc_lickinlab_lick_', count:5, max: 1.5},
     {image: 'Mmmm.png', file: 'bss_kfc_lickinlab_mmm_', count:5, min: 1.5, max: 3.0},  
     {image: 'Music.png', file: 'bss_kfc_lickinlab_music_', count:5, min: 3.0}, 
-    {image: 'X-Factor.png', file: 'bss_eggo_dingthing_leggo_', count:11}
+    {image: 'X-Factor.png', file: 'bss_kfc_lickinlab_xfactor_', count:5}
 ];
 
 config.voiceCount = config.voices.length;
