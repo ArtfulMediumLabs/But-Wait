@@ -124,7 +124,7 @@ function randomNote(voiceIndex) {
         fixed = true;
         velocity = config.voices[voiceIndex].velocity;
     } else {
-        velocity = Math.random() * 0.3 + 0.5;
+        velocity = Math.random() * 0.4 + 0.5;
     }
     
     let noteIndex = Math.floor(Math.random() * noteRanges[voiceIndex].length);
