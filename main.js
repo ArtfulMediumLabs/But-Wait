@@ -100,7 +100,7 @@ function draw() {
 
   noStroke();
 
-  playButton.selected = Tone.Transport.seconds > 0;
+  playButton.selected = Tone.Transport.seconds > 0.001;
   playButton.display();
 
   randomButton.display();
