@@ -57,20 +57,22 @@ function setup() {
       nextPlaybackRate = playbackRate;
       notes = decodeURL();
     } else {
+      nextPlaybackRate = playbackRate;
       notes = randomNotes();
     }
 
     createNoteImgs(notes);
     createPart(notes);
 
-    randomButton = new Button(randomImg, 32, 831);
-    playButton = new Button(playImg, 174, 816, stopImg);
-    saveButton = new Button(saveImg, 346, 831);
+    let top = 100;
+    randomButton = new Button(randomImg, 32, 831 + top);
+    playButton = new Button(playImg, 174, 816 + top, stopImg);
+    saveButton = new Button(saveImg, 346, 831 + top);
 
     prevGroupButton = new Button(prevGroupImg, 893, 948);
     nextGroupButton = new Button(nextGroupImg, 1447, 948);
 
-    slider = new HScrollbar(100, 1029-8, 294, 16, 16, 0.1, 4.0, playbackRate);
+    // slider = new HScrollbar(100, 1029-8, 294, 16, 16, 0.1, 4.0, playbackRate);
 
     helpButton = new Button(helpImg, 1831, 992);
 }
@@ -108,16 +110,16 @@ function draw() {
   prevGroupButton.display();
   nextGroupButton.display();
 
-  image(slowerImg, 11, 966);
-  image(fasterImg, 397, 971);
+  // image(slowerImg, 11, 966);
+  // image(fasterImg, 397, 971);
 
   noteImgs.forEach( (note) => { note.display(); })
 
   let progressX = sequenceWidth * progress() - indicatorImg.width / 2;
   image(indicatorImg, menuWidth + 8 + progressX, 0);
 
-  slider.update();
-  slider.display();
+  // slider.update();
+  // slider.display();
 }
 
 
@@ -231,7 +233,7 @@ function mouseReleased() {
   }
   tapNote = undefined;
   updatePart();
-  nextPlaybackRate = slider.getValue();
+  // nextPlaybackRate = slider.getValue();
   draggingIx = draggingOffset = undefined;
 }
 
