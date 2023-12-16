@@ -77,8 +77,27 @@ function stop() {
 
 function randomNotes(length = config.voiceCount) {
     // return Array.from([0,1,2,3], (i) => randomNote(i));
-    return Array.from({length: length}, (_, i) => randomNote(i));
-  }
+    // return Array.from({length: length}, (_, i) => randomNote(i));
+    let notes = fixedSet(3);
+    notes.push(randomNote(3));
+    return notes;
+}
+
+function fixedSet(length, startIndex=0) {
+    let noteSet = [];
+    let fixed = true;
+
+    let noteIndex = Math.floor(Math.random() * noteRanges[startIndex].length);
+
+    for(var i = startIndex; i < startIndex+length; i++) {
+        let time = config.voices[i].time;
+        let velocity = config.voices[i].velocity;
+        let note = new NoteValue(time, velocity, i, noteIndex, fixed);
+        noteSet.push(note);
+    }
+
+    return noteSet;
+}
   
 function randomNote(voiceIndex) {
     let fixed = false;
