@@ -371,7 +371,9 @@ function decodeURL() {
     let a = parseFloat(urlParams.get("a" + i))
     let t = parseFloat(urlParams.get("t" + i))
     
-    let note = new NoteValue(t, a, v, n)
+    let f = i <= 2;
+
+    let note = new NoteValue(t, a, v, n, f)
     notes.push(note);
   }
 
