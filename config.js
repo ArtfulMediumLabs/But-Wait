@@ -1,7 +1,7 @@
 var config = {}
 
 // total seconds
-config.duration = 4.0;
+config.duration = 3.5;
 config.defaultPlaybackRate = 1.0;
 
 // seconds as min/max bounds, min default 0, max default config.duration
