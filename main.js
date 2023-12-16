@@ -370,10 +370,11 @@ function decodeURL() {
     let n = parseInt(urlParams.get("n" + i))
     let a = parseFloat(urlParams.get("a" + i))
     let t = parseFloat(urlParams.get("t" + i))
+    let m = !!parseInt(urlParams.get("m" + i));
     
     let f = i <= 2;
 
-    let note = new NoteValue(t, a, v, n, f)
+    let note = new NoteValue(t, a, v, n, f, m)
     notes.push(note);
   }
 
@@ -388,6 +389,7 @@ function encodeURL() {
     params['n' + index] = noteValue.noteIndex;
     params['a' + index] = noteValue.velocity.toFixed(2);;
     params['t' + index] = noteValue.time.toFixed(2);;
+    params['m' + index] = noteValue.muted ? 1 : 0;
   });
   const searchParrams = new URLSearchParams(params);
   const new_url = new URL(`${document.location.origin}${document.location.pathname}?${searchParrams.toString()}`)

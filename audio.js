@@ -126,13 +126,13 @@ function randomTimeinMeasures() {
 }
 
 class NoteValue {
-    constructor(time, velocity, voiceIndex, noteIndex, fixed=false) {
+    constructor(time, velocity, voiceIndex, noteIndex, fixed=false, muted=false) {
         this.time = time;
         this.velocity = velocity;
         this.voiceIndex = voiceIndex;
         this.noteIndex = noteIndex;
         this.fixed = fixed;
-        this.muted = false;
+        this.muted = muted;
         this.noteImg = undefined;
     }
 
