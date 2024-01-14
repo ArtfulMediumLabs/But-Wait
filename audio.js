@@ -92,7 +92,8 @@ function fixedSet(length, startIndex=0) {
     for(var i = startIndex; i < startIndex+length; i++) {
         let time = config.voices[i].time;
         let velocity = config.voices[i].velocity;
-        let note = new NoteValue(time, velocity, i, noteIndex, fixed);
+        let muted = i > 0 ? Math.random() > 0.5 : false;
+        let note = new NoteValue(time, velocity, i, noteIndex, fixed, muted);
         noteSet.push(note);
     }
 
