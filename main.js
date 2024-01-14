@@ -136,6 +136,7 @@ function mousePressed() {
     let notes = randomNotes();
     createPart(notes);
     createNoteImgs(notes);
+    forcePlay();
     return;
   }
 
@@ -212,6 +213,10 @@ function play() {
     return;
   }
   
+  forcePlay();
+}
+
+function forcePlay() {
   playbackRate = nextPlaybackRate;
   playPart();
 }
