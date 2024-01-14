@@ -23,8 +23,8 @@ function preload() {
   prevImg = loadImage('img/previous_sound.png');
   nextImg = loadImage('img/next_sound.png');
 
-  prevGroupImg = loadImage('img/previous_group.png');
-  nextGroupImg = loadImage('img/next_group.png');
+  // prevGroupImg = loadImage('img/previous_group.png');
+  // nextGroupImg = loadImage('img/next_group.png');
 
   playImg = loadImage('img/play.png');
   stopImg = loadImage('img/stop.png');
@@ -69,8 +69,8 @@ function setup() {
     playButton = new Button(playImg, 174, 816 + top, stopImg);
     saveButton = new Button(saveImg, 346, 831 + top);
 
-    prevGroupButton = new Button(prevGroupImg, 893, 948);
-    nextGroupButton = new Button(nextGroupImg, 1447, 948);
+    // prevGroupButton = new Button(prevGroupImg, 893, 948);
+    // nextGroupButton = new Button(nextGroupImg, 1447, 948);
 
     // slider = new HScrollbar(100, 1029-8, 294, 16, 16, 0.1, 4.0, playbackRate);
 
@@ -107,8 +107,8 @@ function draw() {
   helpButton.display();
   saveButton.display();
 
-  prevGroupButton.display();
-  nextGroupButton.display();
+  // prevGroupButton.display();
+  // nextGroupButton.display();
 
   // image(slowerImg, 11, 966);
   // image(fasterImg, 397, 971);
@@ -154,28 +154,28 @@ function mousePressed() {
     return;
   }
 
-  if ( nextGroupButton.inBounds(mouseX, mouseY) ) {
-    for (let i = 0; i < 3; i++) {
-      noteImgs[i].noteValue.nextNoteIndex();
-    }
-    return;
-  }
+  // if ( nextGroupButton.inBounds(mouseX, mouseY) ) {
+  //   for (let i = 0; i < 3; i++) {
+  //     noteImgs[i].noteValue.nextNoteIndex();
+  //   }
+  //   return;
+  // }
 
-  if ( prevGroupButton.inBounds(mouseX, mouseY) ) {
-    for (let i = 0; i < 3; i++) {
-      noteImgs[i].noteValue.previousNoteIndex();
-    }
-    return;
-  }
+  // if ( prevGroupButton.inBounds(mouseX, mouseY) ) {
+  //   for (let i = 0; i < 3; i++) {
+  //     noteImgs[i].noteValue.previousNoteIndex();
+  //   }
+  //   return;
+  // }
 
   for (let i = noteImgs.length - 1; i >= 0; i--) {
-    if ( noteImgs[i].noteValue.fixed == true ) {
-      if ( noteImgs[i].inBounds(mouseX, mouseY) ) {
-        noteImgs[i].noteValue.muted = !noteImgs[i].noteValue.muted;
-        break;
-      }
-      continue;
-    }
+    // if ( noteImgs[i].noteValue.fixed == true ) {
+    //   if ( noteImgs[i].inBounds(mouseX, mouseY) ) {
+    //     noteImgs[i].noteValue.muted = !noteImgs[i].noteValue.muted;
+    //     break;
+    //   }
+    //   continue;
+    // }
     if ( noteImgs[i].inPreviousHover(mouseX, mouseY) ) {
       noteImgs[i].noteValue.previousNoteIndex();
       break;
@@ -183,6 +183,13 @@ function mousePressed() {
     if ( noteImgs[i].inNextHover(mouseX, mouseY) ) {
       noteImgs[i].noteValue.nextNoteIndex();
       break;
+    }
+    if ( noteImgs[i].noteValue.fixed == true ) {
+      if ( noteImgs[i].inBounds(mouseX, mouseY) ) {
+        noteImgs[i].noteValue.muted = !noteImgs[i].noteValue.muted;
+        break;
+      }
+      continue;
     }
     if ( noteImgs[i].inBounds(mouseX, mouseY) ) {
       tapNote = noteImgs[i].noteValue;
@@ -261,7 +268,8 @@ class Note {
       noTint();
     }
     image(this.img, this.x, this.y);
-    if (this.noteValue.fixed == false && this.hover) {
+    // if (this.noteValue.fixed == false && this.hover) {
+    if (this.hover) {
       image(prevImg, this.x, this.y + this.img.height - prevImg.height);
       image(nextImg, this.x + this.img.width - prevImg.width, this.y + this.img.height - prevImg.height);
       //displayTextNote.bind(this)()
@@ -301,9 +309,9 @@ class Note {
   }
 
   inPreviousHover(x, y) {
-    if (this.noteValue.fixed == true) {
-      return false;
-    }
+    // if (this.noteValue.fixed == true) {
+    //   return false;
+    // }
     return ( 
       between(x, this.x, this.x + prevImg.width) && 
       between(y, this.y + this.img.height - prevImg.height, this.y + this.img.height) 
@@ -311,9 +319,9 @@ class Note {
   }
 
   inNextHover(x, y) {
-    if (this.noteValue.fixed == true) {
-      return false;
-    }
+    // if (this.noteValue.fixed == true) {
+    //   return false;
+    // }
     return ( 
       between(x, this.x + this.img.width - nextImg.width, this.x + this.img.width) && 
       between(y, this.y + this.img.height - prevImg.height, this.y + this.img.height) 
