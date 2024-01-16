@@ -32,8 +32,8 @@ function preload() {
   helpImg = loadImage('img/help.png');
   saveImg = loadImage('img/save.png');
 
-  fasterImg = loadImage('img/faster.png');
-  slowerImg = loadImage('img/slower.png');
+  // fasterImg = loadImage('img/faster.png');
+  // slowerImg = loadImage('img/slower.png');
 
   indicatorImg = loadImage('img/play_bar_indicator.png');
 }
@@ -41,7 +41,7 @@ function preload() {
 function setup() {
     createCanvas(1920, 1080);
     
-    menuWidth = 550;
+    menuWidth = 570;
     sequenceWidth = 1920 - menuWidth - 16;
 
     sequenceHeight = 869 - 229 - 16;
@@ -64,17 +64,17 @@ function setup() {
     createNoteImgs(notes);
     createPart(notes);
 
-    let top = 100;
-    randomButton = new Button(randomImg, 32, 831 + top);
-    playButton = new Button(playImg, 174, 816 + top, stopImg);
-    saveButton = new Button(saveImg, 346, 831 + top);
+    let top = 904;
+    randomButton = new Button(randomImg, 40, 9 + top);
+    playButton = new Button(playImg, 188, top, stopImg);
+    saveButton = new Button(saveImg, 354, 9 + top);
 
     // prevGroupButton = new Button(prevGroupImg, 893, 948);
     // nextGroupButton = new Button(nextGroupImg, 1447, 948);
 
     // slider = new HScrollbar(100, 1029-8, 294, 16, 16, 0.1, 4.0, playbackRate);
 
-    helpButton = new Button(helpImg, 1831, 992);
+    helpButton = new Button(helpImg, 1772, 913);
 }
 
 function createNoteImgs(notes) {
