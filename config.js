@@ -6,10 +6,10 @@ config.defaultPlaybackRate = 1.2;
 
 // seconds as min/max bounds, min default 0, max default config.duration
 config.voices = [
-    {image: 'BWTM.png', file: 'bss_kfc_lickinlab_lick_', count:26, time: 1.45, velocity: 0.8, y: 62},
-    {image: 'Music.png', file: 'bss_kfc_lickinlab_mmm_', count:26, time: 1.45, velocity: 0.8, y: 413},  
-    {image: 'Melody.png', file: 'bss_kfc_lickinlab_music_', count:26, time: 1.45, velocity: 0.8, y: 722}, 
-    {image: 'Spice.png', file: 'bss_kfc_lickinlab_xfactor_', count:26, min:[0.0,2.3], max:[0.6,3.2]}
+    {image: 'BWTM.png', file: 'bss_marcos_maestro_voice_', count:26, time: 1.45, velocity: 0.8, y: 62},
+    {image: 'Music.png', file: 'bss_marcos_maestro_music_', count:26, time: 1.45, velocity: 0.8, y: 413},  
+    {image: 'Melody.png', file: 'bss_marcos_maestro_melody_', count:26, time: 1.45, velocity: 0.8, y: 722}, 
+    {image: 'Spice.png', file: 'bss_marcos_maestro_sting_', count:26, min:[0.0,2.3], max:[0.6,3.2]}
 ];
 
 config.voiceCount = config.voices.length;
